@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency "delayed_job", ">= 2.1.0"
   s.add_dependency "exception_notification", ">= 2.4.1"
+  s.add_dependency "rails", "~> 3.0.0"
 end
