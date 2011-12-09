@@ -2,6 +2,10 @@ require "spec_helper"
 
 class Example
   include Dobexer::ExceptionNotifier
+
+  def perform
+    raise ArgumentError
+  end
 end
 
 describe Dobexer::ExceptionNotifier do
@@ -30,6 +34,15 @@ describe Dobexer::ExceptionNotifier do
 
       Example.new.error(job_mock, "")
     end
+  end
+
+  it "should send an email when an exception is thrown" do
+    Delayed::Worker.guess_backend
+    Delayed::Job.enqueue Example.new
+    job = Delayed::Job.last
+    Delayed::Worker.new.run(job)
+
+    ActionMailer::Base.deliveries.should_not be_empty
   end
 end
 
