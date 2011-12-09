@@ -1,5 +1,6 @@
 Dobexer
 =======
+[![Build Status](https://secure.travis-ci.org/rogercampos/dobexer.png)](http://travis-ci.org/rogercampos/dobexer)
 
 This gem aims to provide a simple integration of ExceptionNotification and
 DelayedJob, so we can be emailed when an error occurs inside a job's
